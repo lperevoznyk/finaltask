@@ -4,6 +4,9 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import tests.BaseTest;
 
@@ -11,11 +14,11 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.util.Map;
 
-public class BaseUiTest extends BaseTest {
+public class BaseClassUiTest extends BaseTest {
 
-    @BeforeMethod
+    @BeforeClass
     public void baseUiSetup() throws MalformedURLException {
-        boolean isRemote = Boolean.parseBoolean(System.getProperty("remote"));//need to read from properties
+        boolean isRemote = true;//need to read from properties
         String baseUrl = "https://google.com";//need to read from properties
         if (isRemote == true) {
             DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -34,6 +37,11 @@ public class BaseUiTest extends BaseTest {
         } else {
             Selenide.open(baseUrl);
         }
+    }
+
+    @AfterClass
+    public void closeDriver() {
+        WebDriverRunner.closeWebDriver();
     }
 
 }

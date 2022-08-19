@@ -13,7 +13,6 @@
     <allure.version>2.18.1</allure.version>
     <selenide.version>6.7.2</selenide.version>
     <owner.version>1.0.12</owner.version>
-    <suite>${suite}</suite>
   </properties>
 
   <build>
@@ -37,7 +36,8 @@
             </property>
           </systemProperties>
           <suiteXmlFiles>
-            <suiteXmlFile>src/test/resources/suites/${suite}</suiteXmlFile>
+<!--            <suiteXmlFile>src/test/resources/suites/SelenideClasses.xml</suiteXmlFile>-->
+            <suiteXmlFile>src/test/resources/suites/SelenideMethods.xml</suiteXmlFile>
           </suiteXmlFiles>
         </configuration>
       </plugin>
