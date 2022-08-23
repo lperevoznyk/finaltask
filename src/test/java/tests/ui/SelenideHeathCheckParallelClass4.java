@@ -1,6 +1,8 @@
 package tests.ui;
 
 import org.testng.annotations.Test;
+import pages.BadRozetkaHomePage;
+import pages.GoodRozetkaHomePage;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
@@ -9,6 +11,8 @@ public class SelenideHeathCheckParallelClass4 extends BaseClassUiTest {
 
     @Test
     public void selenideTest1() {
+        GoodRozetkaHomePage goodRozetkaHomePage = new GoodRozetkaHomePage();
+        goodRozetkaHomePage.header.search("iphone 13 PRO");
         $("[name='q']")
                 .shouldBe(visible)
                 .setValue("Selenide 1")
